@@ -1,15 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Raccoon msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
+
+// GERER LE PASSAGE D'UNE ETAPE A UNE AUTRE
 import HelloWorld from './components/HelloWorld.vue'
+import Raccoon from './components/Raccoon.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Raccoon
   }
 }
 </script>
