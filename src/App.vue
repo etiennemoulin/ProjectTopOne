@@ -3,15 +3,12 @@
 </template>
 
 <script>
-
-// GERER LE PASSAGE D'UNE ETAPE A UNE AUTRE
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
 import Raccoon from './components/Raccoon.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Raccoon
   }
 }
