@@ -3,7 +3,6 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
 import Raccoon from './components/Raccoon.vue'
 
 export default {
