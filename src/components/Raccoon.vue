@@ -73,8 +73,6 @@ export default {
         this.win()
       } else if (this.counter <= 0) {
         this.loose()
-      } else {
-        print("allo")
       }
     },
     win() {
