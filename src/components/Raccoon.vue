@@ -79,17 +79,11 @@ export default {
         print("allo")
       }
     },
-    win(event) {
+    win() {
       alert('You win')
-      if (event) {
-        alert(event.target.tagName)
-      }
     },
-    loose(event) {
+    loose() {
       alert('You loose')
-      if (event) {
-        alert(event.target.tagName)
-      }
     } 
   }
 }
