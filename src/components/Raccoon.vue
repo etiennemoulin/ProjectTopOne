@@ -105,12 +105,14 @@ export default {
       this.reveleVictory = !this.reveleVictory;
       if (this.reveleVictory==false) { 
         this.counter=20
+        this.raccoon_emotion = neutral_raccoon
       }
     },
     toggleLooseModale() {
       this.reveleLoose = !this.reveleLoose;
       if (this.reveleLoose==false) { 
         this.counter=20
+        this.raccoon_emotion = neutral_raccoon
       }
     } 
   }

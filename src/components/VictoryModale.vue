@@ -4,7 +4,7 @@
 
     <div class="modale card">
       <h2>VICTOIRE, TU AS ADOPTE LE PETIT RACCOON</h2>
-      <button @click="toggleModale()">Rejouer</button>s
+      <button @click="toggleModale()">Rejouer</button>
     </div>
   </div>
 </template>
