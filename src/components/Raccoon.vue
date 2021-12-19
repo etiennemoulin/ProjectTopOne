@@ -31,6 +31,8 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
           <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
           <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
       </map>
+      <victorymodale :revele="reveleVictory" :toggleModale="toggleVictoryModale"></victorymodale>
+      <loosemodale :revele="reveleLoose" :toggleModale="toggleLooseModale"></loosemodale>
     <p>ICI BARRE DE NOURRITURE, METTRE LES PHOTOS EN PETIT</p>
   </div>
 </template>
@@ -40,6 +42,8 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
 import neutral_raccoon from "../../img/raccoon.png"
 import happy_raccoon from "../../img/raccooncute.png"
 import angry_raccoon from "../../img/angryraccoon.jpg"
+import VictoryModale from "./VictoryModale";
+import LooseModale from "./LooseModale";
 //import sad_raccoon from "" //ATTENTION SI LE CHEMIN EST VIDE L'APPLI PLANTE
 
 export default {
@@ -50,8 +54,14 @@ export default {
   data() { //Donnees du composant, modifiables
     return {
       counter: 20,
-      raccoon_emotion : neutral_raccoon
+      raccoon_emotion : neutral_raccoon,
+      reveleVictory: false,
+      reveleLoose: false
     }
+  },
+  components: {
+    victorymodale: VictoryModale,
+    loosemodale: LooseModale
   },
   methods : { //Fonctions utilisées dans le composant
     change_raccoon_emotion (emotion, n) { //Fonction qui change l'émotion du Raccoon, incrémente le compteur et gère la victoire
@@ -70,16 +80,16 @@ export default {
       }
       this.counter = this.counter+n
       if (this.counter >= 100) {
-        this.win()
+        this.toggleVictoryModale()()
       } else if (this.counter <= 0) {
-        this.loose()
+        this.toggleLooseModale()
       }
     },
-    win() {
-      alert('You win')
+    toggleVictoryModale() {
+      this.reveleVictory = !this.reveleVictory;
     },
-    loose() {
-      alert('You loose')
+    toggleLooseModale() {
+      this.reveleLoose = !this.reveleLoose;
     } 
   }
 }
