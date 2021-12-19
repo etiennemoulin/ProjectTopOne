@@ -34,14 +34,13 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
           <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('shy', 20)" />
       </map>
     <div class="Nourriture">
-      <input type="image" id="image" alt="Pizza" src="../assets/pizza.png" class="Food">
-      <input type="image" id="image" alt="Egg" src="../assets/pizza.png" class="Food">
-      <input type="image" id="image" alt="Cream" src="../assets/pizza.png" class="Food">
-      <input type="image" id="image" alt="Strawberry" src="../assets/pizza.png" class="Food">
+      <img alt="Pizza" src="../assets/pizza.png" @click="change_raccoon_emotion('angry', -10)"/>
+      <img alt="Egg" src="../assets/egg.png" @click="change_raccoon_emotion('angry', -10)"/>
+      <img alt="Cream" src="../assets/ice_cream.png" @click="change_raccoon_emotion('angry', -10)"/>
+      <img alt="Strawberry" src="../assets/strawberry.png" @click="change_raccoon_emotion('angry', -10)"/>
     </div>
       <victorymodale :revele="reveleVictory" :toggleModale="toggleVictoryModale"></victorymodale>
       <loosemodale :revele="reveleLoose" :toggleModale="toggleLooseModale"></loosemodale>
-    <p>ICI BARRE DE NOURRITURE, METTRE LES PHOTOS EN PETIT</p>
   </div>
 </template>
 
