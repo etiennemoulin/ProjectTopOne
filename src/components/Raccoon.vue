@@ -96,16 +96,22 @@ export default {
       }
       this.counter = this.counter+n
       if (this.counter >= 100) {
-        this.toggleVictoryModale()()
+        this.toggleVictoryModale()
       } else if (this.counter <= 0) {
         this.toggleLooseModale()
       }
     },
     toggleVictoryModale() {
       this.reveleVictory = !this.reveleVictory;
+      if (this.reveleVictory==false) { 
+        this.counter=20
+      }
     },
     toggleLooseModale() {
       this.reveleLoose = !this.reveleLoose;
+      if (this.reveleLoose==false) { 
+        this.counter=20
+      }
     } 
   }
 }

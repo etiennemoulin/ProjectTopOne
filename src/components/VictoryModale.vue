@@ -3,8 +3,8 @@
     <div class="overlay" v-on:click="toggleModale"></div>
 
     <div class="modale card">
-      <div v-on:click="toggleModale" class="btn-modale btn btn-danger">X</div>
       <h2>VICTOIRE, TU AS ADOPTE LE PETIT RACCOON</h2>
+      <button @click="toggleModale()">Rejouer</button>s
     </div>
   </div>
 </template>
