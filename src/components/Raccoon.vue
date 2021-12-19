@@ -10,16 +10,15 @@ Appeler un élément de Data dans un argument d'une balise :
 -->
 <template>
   <div class="Raccoon">
-    <h1>{{raccoon_emotion}}</h1>
       <label for="file">Friendship progress : </label>
       <progress id="file" max="100" :value="counter"> {{ counter }} % </progress>
-      <img alt="Raccoon cute" src="../../img/raccoon.png" usemap=#cuteRaccoon>
+      <img alt="Raccoon cute" :src="raccoon_emotion" usemap=#cuteRaccoon>
       <map name="cuteRaccoon" id="cuteRaccoon">
-          <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="increment(20)"/>
+          <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="increment(-20)"/>
           <area shape="rect" alt="" title="Right ear" coords="340,38,417,102" href="#Raccoon" @click="increment(-20)" />
           <area shape="rect" alt="" title="Nose" coords="358,199,399,230" href="#Raccoon" @click="increment(20)" />
           <area shape="rect" alt="" title="Left eye" coords="283,151,311,174" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Right eye" coords="366,141,385,165" href="#Raccoon" @click="increment(20)"/>
+          <area shape="rect" alt="" title="Right eye" coords="366,141,385,165" href="#Raccoon" @click="change_raccoon_emotion('angry', -20)"/>
           <area shape="rect" alt="" title="Forehead" coords="236,80,360,142" href="#Raccoon" @click="increment(20)" />
           <area shape="rect" alt="" title="Left paw" coords="25,431,124,453" href="#Raccoon" @click="increment(20)" />
           <area shape="rect" alt="" title="Right paw" coords="411,447,492,477" href="#Raccoon" @click="increment(20)" />
@@ -30,6 +29,12 @@ Appeler un élément de Data dans un argument d'une balise :
 </template>
 
 <script>
+//change_raccoon_emotion('angry', -20)
+import neutral_raccoon from "../../img/raccoon.png"
+import happy_raccoon from "../../img/raccooncute.png"
+import angry_raccoon from "../../img/angryraccoon.jpg"
+//import sad_raccoon from ""
+
 export default {
   name: 'Raccoon', //Nom du composant
   props: { //Variables transmisent par le parent du composant
@@ -38,11 +43,27 @@ export default {
   data() { //Donnees du composant, modifiables
     return {
       counter: 20,
-      raccoon_emotion : '"../../img/raccoon.png"'
+      raccoon_emotion : neutral_raccoon
     }
   },
   methods : { //Fonctions utilisées dans le composant
     increment (n) {
+      this.counter = this.counter+n
+    },
+    change_raccoon_emotion (emotion, n) {
+      switch(emotion) {
+        case ("happy"):
+          this.raccoon_emotion = happy_raccoon
+          break
+        case ("angry") :
+          this.raccoon_emotion = angry_raccoon
+          break
+       // case ("sad") :
+       //   this.raccoon_emotion = sad_raccoon
+        //  break
+        default :
+          this.raccoon_emotion = neutral_raccoon
+      }
       this.counter = this.counter+n
     }
   }

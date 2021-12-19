@@ -1,7 +1,7 @@
 <template>
   <Raccoon msg="Welcome to Your Vue.js App"/>
 </template>
-
+<!-- vif velse contenu conditionnel -->
 <script>
 import Raccoon from './components/Raccoon.vue'
 
