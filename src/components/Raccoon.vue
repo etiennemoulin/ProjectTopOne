@@ -70,7 +70,6 @@ export default {
           this.raccoon_emotion = neutral_raccoon
       }
       this.counter = this.counter+n
-      print(this.counter)
       if (this.counter >= 100) {
         this.win()
       } else if (this.counter <= 0) {
