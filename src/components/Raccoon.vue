@@ -16,8 +16,10 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
 -->
 <template>
   <div class="Raccoon">
+    <div class="Progress">
       <label for="file">Friendship progress : </label>
       <progress id="file" max="100" :value="counter"> {{ counter }} % </progress>
+    </div>
       <img alt="Raccoon cute" :src="raccoon_emotion" usemap=#cuteRaccoon>
       <map name="cuteRaccoon" id="cuteRaccoon">
           <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="change_raccoon_emotion('angry', -10)"/>
@@ -31,6 +33,12 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
           <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="change_raccoon_emotion('love', 20)" />
           <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('shy', 20)" />
       </map>
+    <div class="Nourriture">
+      <input type="image" id="image" alt="Pizza" src="../assets/pizza.png" class="Food">
+      <input type="image" id="image" alt="Egg" src="../assets/pizza.png" class="Food">
+      <input type="image" id="image" alt="Cream" src="../assets/pizza.png" class="Food">
+      <input type="image" id="image" alt="Strawberry" src="../assets/pizza.png" class="Food">
+    </div>
       <victorymodale :revele="reveleVictory" :toggleModale="toggleVictoryModale"></victorymodale>
       <loosemodale :revele="reveleLoose" :toggleModale="toggleLooseModale"></loosemodale>
     <p>ICI BARRE DE NOURRITURE, METTRE LES PHOTOS EN PETIT</p>
@@ -103,3 +111,63 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+@media (max-width: 650px) {
+ .Raccoon {
+    position: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .Progress{
+    display: flex;
+    flex-direction: column;
+    padding: 5em;
+  }
+
+  .Nourriture {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid rgb(111,41,97);
+    background-color: aquamarine;
+    border-radius: 5px;
+    
+    
+  }
+
+  .Food {
+    padding: 5em;
+    max-width: 10em;
+    
+  }
+
+}
+@media (min-width: 650px) {
+  .Raccoon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .Nourriture {
+    display: flex;
+    border: 2px solid rgb(111,41,97);
+    background-color: aquamarine;
+    border-radius: 20px;
+    
+  }
+
+  .Food {
+    padding: 5em;
+  }
+
+}
+
+
+</style>
