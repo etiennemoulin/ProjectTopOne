@@ -20,17 +20,18 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
       <progress id="file" max="100" :value="counter"> {{ counter }} % </progress>
       <img alt="Raccoon cute" :src="raccoon_emotion" usemap=#cuteRaccoon>
       <map name="cuteRaccoon" id="cuteRaccoon">
-          <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="increment(-20)"/>
-          <area shape="rect" alt="" title="Right ear" coords="340,38,417,102" href="#Raccoon" @click="increment(-20)" />
-          <area shape="rect" alt="" title="Nose" coords="358,199,399,230" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Left eye" coords="283,151,311,174" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Right eye" coords="366,141,385,165" href="#Raccoon" @click="change_raccoon_emotion('angry', -20)"/>
-          <area shape="rect" alt="" title="Forehead" coords="236,80,360,142" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Left paw" coords="25,431,124,453" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Right paw" coords="411,447,492,477" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="increment(20)" />
-          <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="increment(20)" />
+          <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="change_raccoon_emotion('h', -20)"/>
+          <area shape="rect" alt="" title="Right ear" coords="340,38,417,102" href="#Raccoon" @click="change_raccoon_emotion('h', -20)" />
+          <area shape="rect" alt="" title="Nose" coords="358,199,399,230" href="#Raccoon" @click="change_raccoon_emotion('h', -20)" />
+          <area shape="rect" alt="" title="Left eye" coords="283,151,311,174" href="#Raccoon" @click="change_raccoon_emotion('h', -20)" />
+          <area shape="rect" alt="" title="Right eye" coords="366,141,385,165" href="#Raccoon" @click="change_raccoon_emotion('h', -20)"/>
+          <area shape="rect" alt="" title="Forehead" coords="236,80,360,142" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
+          <area shape="rect" alt="" title="Left paw" coords="25,431,124,453" href="#Raccoon" @click="change_raccoon_emotion('h', -20)" />
+          <area shape="rect" alt="" title="Right paw" coords="411,447,492,477" href="#Raccoon" @click="change_raccoon_emotion('h', -20)" />
+          <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
+          <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
       </map>
+      <button @click="win">Greet</button>
     <p>ICI BARRE DE NOURRITURE, METTRE LES PHOTOS EN PETIT</p>
   </div>
 </template>
@@ -54,10 +55,7 @@ export default {
     }
   },
   methods : { //Fonctions utilisées dans le composant
-    increment (n) {
-      this.counter = this.counter+n
-    },
-    change_raccoon_emotion (emotion, n) {
+    change_raccoon_emotion (emotion, n) { //Fonction qui change l'émotion du Raccoon, incrémente le compteur et gère la victoire
       switch(emotion) {
         case ("happy"):
           this.raccoon_emotion = happy_raccoon
@@ -72,7 +70,27 @@ export default {
           this.raccoon_emotion = neutral_raccoon
       }
       this.counter = this.counter+n
-    }
+      print(this.counter)
+      if (this.counter >= 100) {
+        this.win()
+      } else if (this.counter <= 0) {
+        this.loose()
+      } else {
+        print("allo")
+      }
+    },
+    win(event) {
+      alert('You win')
+      if (event) {
+        alert(event.target.tagName)
+      }
+    },
+    loose(event) {
+      alert('You loose')
+      if (event) {
+        alert(event.target.tagName)
+      }
+    } 
   }
 }
 </script>
