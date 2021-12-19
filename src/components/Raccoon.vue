@@ -31,7 +31,6 @@ Gestion des points d'alimentation au clic, si trop chiant de faire un drag and d
           <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
           <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('h', 20)" />
       </map>
-      <button @click="win">Greet</button>
     <p>ICI BARRE DE NOURRITURE, METTRE LES PHOTOS EN PETIT</p>
   </div>
 </template>
