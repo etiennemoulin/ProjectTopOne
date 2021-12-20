@@ -15,32 +15,42 @@ BARRE AVEC PROPOSITION DE NOURRITURE EN DESSOUS DU RACCON
 Gestion des points d'alimentation au clic, si trop chiant de faire un drag and drop
 -->
 <template>
-  <div class="Raccoon">
-    <div class="Progress">
-      <label for="file">Friendship progress : </label>
-      <progress id="file" max="100" :value="counter"> {{ counter }} % </progress>
+  <div class="page">
+    <div class="Raccoon">
+      <div class="Progress">
+        <label for="file">Friendship progress : </label>
+        <progress id="file" max="100" :value="counter"> {{ counter }} % </progress>
+      </div>
+        <img alt="Raccoon cute" :src="raccoon_emotion" usemap=#cuteRaccoon>
+        <map name="cuteRaccoon" id="cuteRaccoon">
+            <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="change_raccoon_emotion('angry', -10)"/>
+            <area shape="rect" alt="" title="Right ear" coords="340,38,417,102" href="#Raccoon" @click="change_raccoon_emotion('angry', -10)" />
+            <area shape="rect" alt="" title="Nose" coords="358,199,399,230" href="#Raccoon" @click="change_raccoon_emotion('sad', -20)" />
+            <area shape="rect" alt="" title="Left eye" coords="283,151,311,174" href="#Raccoon" @click="change_raccoon_emotion('sad', -20)" />
+            <area shape="rect" alt="" title="Right eye" coords="366,141,385,165" href="#Raccoon" @click="change_raccoon_emotion('sad', -20)"/>
+            <area shape="rect" alt="" title="Forehead" coords="236,80,360,142" href="#Raccoon" @click="change_raccoon_emotion('love', 20)" />
+            <area shape="rect" alt="" title="Left paw" coords="25,431,124,453" href="#Raccoon" @click="change_raccoon_emotion('vangry', -20)" />
+            <area shape="rect" alt="" title="Right paw" coords="411,447,492,477" href="#Raccoon" @click="change_raccoon_emotion('vangry', -20)" />
+            <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="change_raccoon_emotion('love', 20)" />
+            <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('shy', 20)" />
+        </map>
+      <div class="Nourriture">
+        <div class="contenant">
+          <img alt="Pizza" class="Food" src="../assets/pizza.png" @click="change_raccoon_emotion('angry', -10)"/>
+        </div>
+        <div class="contenant">
+          <img alt="Egg" class="Food" src="../assets/egg.png" @click="change_raccoon_emotion('angry', -10)"/>
+        </div>
+        <div class="contenant">
+          <img alt="Cream" class="Food" src="../assets/ice_cream.png" @click="change_raccoon_emotion('angry', -10)"/>
+        </div>
+        <div class="contenant">
+          <img alt="Strawberry" class="Food" src="../assets/strawberry.png" @click="change_raccoon_emotion('angry', -10)"/>
+        </div>
+      </div>
+        <victorymodale :revele="reveleVictory" :toggleModale="toggleVictoryModale"></victorymodale>
+        <loosemodale :revele="reveleLoose" :toggleModale="toggleLooseModale"></loosemodale>
     </div>
-      <img alt="Raccoon cute" :src="raccoon_emotion" usemap=#cuteRaccoon>
-      <map name="cuteRaccoon" id="cuteRaccoon">
-          <area shape="rect" alt="" title="Left ear" coords="155,68,225,159" href="#Raccoon" @click="change_raccoon_emotion('angry', -10)"/>
-          <area shape="rect" alt="" title="Right ear" coords="340,38,417,102" href="#Raccoon" @click="change_raccoon_emotion('angry', -10)" />
-          <area shape="rect" alt="" title="Nose" coords="358,199,399,230" href="#Raccoon" @click="change_raccoon_emotion('sad', -20)" />
-          <area shape="rect" alt="" title="Left eye" coords="283,151,311,174" href="#Raccoon" @click="change_raccoon_emotion('sad', -20)" />
-          <area shape="rect" alt="" title="Right eye" coords="366,141,385,165" href="#Raccoon" @click="change_raccoon_emotion('sad', -20)"/>
-          <area shape="rect" alt="" title="Forehead" coords="236,80,360,142" href="#Raccoon" @click="change_raccoon_emotion('love', 20)" />
-          <area shape="rect" alt="" title="Left paw" coords="25,431,124,453" href="#Raccoon" @click="change_raccoon_emotion('vangry', -20)" />
-          <area shape="rect" alt="" title="Right paw" coords="411,447,492,477" href="#Raccoon" @click="change_raccoon_emotion('vangry', -20)" />
-          <area shape="rect" alt="" title="Belly" coords="206,277,376,444" href="#Raccoon" @click="change_raccoon_emotion('love', 20)" />
-          <area shape="rect" alt="" title="Shoulder" coords="413,302,486,392" href="#Raccoon" @click="change_raccoon_emotion('shy', 20)" />
-      </map>
-    <div class="Nourriture">
-      <img alt="Pizza" src="../assets/pizza.png" @click="change_raccoon_emotion('angry', -10)"/>
-      <img alt="Egg" src="../assets/egg.png" @click="change_raccoon_emotion('angry', -10)"/>
-      <img alt="Cream" src="../assets/ice_cream.png" @click="change_raccoon_emotion('angry', -10)"/>
-      <img alt="Strawberry" src="../assets/strawberry.png" @click="change_raccoon_emotion('angry', -10)"/>
-    </div>
-      <victorymodale :revele="reveleVictory" :toggleModale="toggleVictoryModale"></victorymodale>
-      <loosemodale :revele="reveleLoose" :toggleModale="toggleLooseModale"></loosemodale>
   </div>
 </template>
 
@@ -121,60 +131,132 @@ export default {
 
 <style scoped>
 
-@media (max-width: 650px) {
+.page {
+  height: 100%;
+  background: aquamarine;
+}
+
+@media (max-width: 750px) {
  .Raccoon {
     position: top;
     display: flex;
     flex-direction: column;
+    gap: 10px 10px;
     align-items: center;
+    background: rgb(14, 113, 211);
+    padding: 1em;
     
   }
 
   .Progress{
     display: flex;
     flex-direction: column;
-    padding: 5em;
+    padding: 2em;
+    box-shadow: inset -0.2em 0.2em 0.3em 0.3em rgb(85, 209, 168);
+    background: aquamarine;
+    border-radius: 5px;
+    padding: 1em;
   }
 
   .Nourriture {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    border: 2px solid rgb(111,41,97);
-    background-color: aquamarine;
+    justify-content: center;
+    flex-basis: auto;   
+  }
+
+  .contenant {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: inset 0.3em -0.3em 0.3em 0.3em rgb(85, 209, 168);
+    background: aquamarine;
     border-radius: 5px;
-    
+    padding: 0.7em;
     
   }
 
   .Food {
-    padding: 5em;
-    max-width: 10em;
+    align-items: center;
+    min-width: 50%;
+    max-width: 75%;
+    min-height: auto;
     
   }
 
 }
-@media (min-width: 650px) {
+@media (min-width: 750px) {
   .Raccoon {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(14, 113, 211);
+    padding: 1em;
+    
+  }
+
+  .Progress {
+    box-shadow: inset -0.2em 0.2em 0.3em 0.3em rgb(85, 209, 168);
+    background: aquamarine;
+    border-radius: 5px;
+    padding: 1em;
+  }
+
+  .Nourriture {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    
+  }
+
+  .contenant {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: inset 0.3em -0.3em 0.3em 0.3em rgb(85, 209, 168);
+    background: aquamarine;
+    border-radius: 5px;
+    padding: 0.7em;
+    
+  }
+
+  .Food {
+    padding: 1em;
+    
+  }
+
+}
+
+@media (max-height: 750px) and (min-width: 750px) {
+
+  .Raccoon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgb(14, 113, 211);
+    padding: 1em;
     
   }
 
   .Nourriture {
     display: flex;
-    border: 2px solid rgb(111,41,97);
-    background-color: aquamarine;
-    border-radius: 20px;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;   
+  }
+
+  .contenant {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: inset 0.3em -0.3em 0.3em 0.3em rgb(85, 209, 168);
+    background: aquamarine;
+    border-radius: 5px;
+    padding: 0.7em;
     
   }
 
-  .Food {
-    padding: 5em;
-  }
-
 }
-
 
 </style>
