@@ -33,7 +33,7 @@ export default {
   name: "LooseModale",
   methods: {
     defineImg() {
-      return looseImg[Math.floor(Math.random() * 5)];
+      return looseImg[Math.floor(Math.random() * 4)];
     },
   },
   props: ["revele", "toggleModale"],
